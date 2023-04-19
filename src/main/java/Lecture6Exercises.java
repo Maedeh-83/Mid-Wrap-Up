@@ -38,9 +38,7 @@ public class Lecture6Exercises {
         int row1 = m1.length;
         int col1 = m1[0].length;
         int col2 = m2[0].length;
-
         double[][] result = new double[row1][col2];
-
         for (int i = 0; i < row1; i++) {
             for (int j = 0; j < col2; j++) {
                 for (int k = 0; k < col1; k++) {
@@ -56,8 +54,16 @@ public class Lecture6Exercises {
      *   from a 2-dim string array
      *   lecture 6 page 30
      */
-    public List<List<String>> arrayToList(String[][] names) {
-        return null;
+    public ArrayList<ArrayList<String>> arrayToList(String[][] inputArray) {
+        ArrayList<ArrayList<String>> outputList = new ArrayList<>();
+        for (int i = 0; i < inputArray.length; i++) {
+            ArrayList<String> innerList = new ArrayList<>();
+            for (int j = 0; j < inputArray[i].length; j++) {
+                innerList.add(inputArray[i][j]);
+            }
+            outputList.add(innerList);
+        }
+        return outputList;
     }
 
     /*
