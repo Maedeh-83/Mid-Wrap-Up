@@ -21,9 +21,44 @@ public class Lecture5Exercises {
      *   given length and at least 1 digit and 1 special character
      *   lecture 5 page 14
      */
-    public String strongPassword(int length) throws Exception {
 
-        return null;
+    public String strongPassword(int length) throws Exception{
+        String CAPITAL_LETTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        String LOWERCASE_LETTERS = "abcdefghijklmnopqrstuvwxyz";
+        String NUMBERS = "1234567890";
+        String SPECIAL_CHARACTERS = "!@#$%^&*_=+-/";
+        String password = "";
+        boolean hasDigit = false;
+        boolean hasSpecialChar = false;
+        Random random = new Random();
+        for(int i = 0; i < length; i++){
+            int type = random.nextInt(4);
+            switch (type) {
+                //افزودن حروف بزرگ
+                case 0:
+                    password += CAPITAL_LETTERS.charAt(random.nextInt(CAPITAL_LETTERS.length()));
+                    break;
+                //افزودن حروف کوچک
+                case 1:
+                    password += LOWERCASE_LETTERS.charAt(random.nextInt(LOWERCASE_LETTERS.length()));
+                    break;
+                //افزودن عدد
+                case 2:
+                    password += NUMBERS.charAt(random.nextInt(NUMBERS.length()));
+                    hasDigit = true;
+                    break;
+                // افزودن کاراکتر خاص
+                case 3:
+                    password += SPECIAL_CHARACTERS.charAt(random.nextInt(SPECIAL_CHARACTERS.length()));
+                    hasSpecialChar = true;
+                    break;
+            }
+        }
+        // اگه پسوورد حداقل یک رقم و یک کاراکتر خاص رو نداشت:
+        if (!hasDigit || !hasSpecialChar) {
+            return strongPassword(length);
+        }
+        return password;
     }
 
     /*

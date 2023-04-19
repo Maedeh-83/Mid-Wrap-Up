@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Lecture6Exercises {
@@ -33,8 +34,21 @@ public class Lecture6Exercises {
      *   implement a function that calculate product of two 2-dim matrices
      *   lecture 6 page 21
      */
-    public double[][] matrixProduct(double[][] m1, double[][] m2) throws RuntimeException {
-        return null;
+    public double[][] matrixProduct(double[][] m1, double[][] m2) throws RuntimeException{
+        int row1 = m1.length;
+        int col1 = m1[0].length;
+        int col2 = m2[0].length;
+
+        double[][] result = new double[row1][col2];
+
+        for (int i = 0; i < row1; i++) {
+            for (int j = 0; j < col2; j++) {
+                for (int k = 0; k < col1; k++) {
+                    result[i][j] += m1[i][k] * m2[k][j];
+                }
+            }
+        }
+        return result;
     }
 
     /*
@@ -52,7 +66,21 @@ public class Lecture6Exercises {
      *   lecture 6 page 30
      */
     public List<Integer> primeFactors(int n) {
-        return null;
+        List<Integer> primeFactors = new ArrayList<>();
+        while (n % 2 == 0) {
+            primeFactors.add(2);
+            n /= 2;
+        }
+        for (int i = 3; i <= Math.sqrt(n); i += 2) {
+            while (n % i == 0) {
+                primeFactors.add(i);
+                n /= i;
+            }
+        }
+        if (n > 2) {
+            primeFactors.add(n);
+        }
+        return primeFactors;
     }
 
     /*
@@ -60,6 +88,13 @@ public class Lecture6Exercises {
      *   lecture 6 page 30
      */
     public List<String> extractWord(String line) {
-        return null;
+        List<String> words = new ArrayList<>();
+        String[] splitWords = line.split("\\s+");
+        for (String word : splitWords) {
+            if (!word.isEmpty()) {
+                words.add(word);
+            }
+        }
+        return words;
     }
 }
