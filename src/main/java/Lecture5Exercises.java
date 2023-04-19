@@ -1,3 +1,4 @@
+import java.util.* ;
 public class Lecture5Exercises {
 
     /*
@@ -6,7 +7,13 @@ public class Lecture5Exercises {
      *   lecture 5 page 14
      */
     public String weakPassword(int length) {
-        return null;
+        String Alphabet = "abcdefghijklmnopqrstuvxyz";
+        StringBuilder sb = new StringBuilder(length);
+        for (int i = 0; i < length; i++) {
+            int index = (int) (Alphabet.length() * Math.random());
+            sb.append(Alphabet.charAt(index));
+        }
+        return sb.toString();
     }
 
     /*
@@ -15,6 +22,7 @@ public class Lecture5Exercises {
      *   lecture 5 page 14
      */
     public String strongPassword(int length) throws Exception {
+
         return null;
     }
 
@@ -26,7 +34,13 @@ public class Lecture5Exercises {
      *   of ones in binary format
      *   lecture 5 page 17
      */
-    public boolean isFiboBin(int n) {
+
+    public static boolean isFiboBin(int n) {
+        for (int i = 0; i < 100; i++) {
+            if (n == Lecture4Exercises.fibonacci(i) + Integer.parseInt(Integer.toBinaryString(Lecture4Exercises.fibonacci(i)))) {
+                return true;
+            }
+        }
         return false;
     }
 }

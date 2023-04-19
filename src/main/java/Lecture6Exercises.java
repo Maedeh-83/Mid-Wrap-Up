@@ -7,8 +7,12 @@ public class Lecture6Exercises {
      *   elements at even positions
      *   lecture 6 page  16
      */
-    public long calculateEvenSum(int[] arr) {
-        return 0L;
+    public int calculateEvenSum(int[] arr) {
+        int sum = 0;
+        for(int i=0; i< arr.length ; i=i+2) {
+            sum = sum + (int) arr[i] ;
+        }
+        return sum ;
     }
 
     /*
@@ -17,7 +21,12 @@ public class Lecture6Exercises {
      *   lecture 6 page 16
      */
     public int[] reverseArray(int[] arr) {
-        return null;
+        for(int i = 0; i < arr.length / 2; i++) {
+            int j = arr[i];
+            arr[i] = arr[arr.length - i - 1];
+            arr[arr.length - i - 1] = j;
+        }
+        return arr;
     }
 
     /*
